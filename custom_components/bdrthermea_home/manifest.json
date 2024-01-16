@@ -1,0 +1,13 @@
+{
+  "domain": "bdrthermea_home",
+  "name": "BDRThermea Home",
+  "codeowners": [
+    "@msvisser"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/defixio/bdrthermea_home",
+  "integration_type": "device",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/defixio/bdrthermea_home/issues",
+  "version": "0.0.0"
+}
