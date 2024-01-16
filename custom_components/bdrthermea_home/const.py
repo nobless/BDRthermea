@@ -10,7 +10,15 @@ from homeassistant.components.binary_sensor import (
 )
 from homeassistant.const import UnitOfEnergy, UnitOfTemperature, UnitOfPressure
 
-DOMAIN = "remeha_home"
+BRAND = "baxi" # baxi or remeha
+DOMAIN = "bdrthermea_home"
+MANUFACTURER = None
+if BRAND == "remeha":
+    #DOMAIN = "remeha_home"
+    MANUFACTURER = "Remeha"
+elif BRAND == "baxi":
+    #DOMAIN = "baxi_home"
+    MANUFACTURER = "Baxi"
 
 APPLIANCE_SENSOR_TYPES = [
     SensorEntityDescription(

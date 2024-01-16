@@ -1,7 +1,7 @@
 // See https://aka.ms/vscode-remote/devcontainer.json for format details.
 {
 	"image": "mcr.microsoft.com/devcontainers/python:3.11-bullseye",
-	"name": "Remeha Home integration development",
+	"name": "BDRThermea Home integration development",
 	"postCreateCommand": "scripts/setup",
 	"forwardPorts": [
 		8123
