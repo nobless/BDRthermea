@@ -40,7 +40,7 @@ APPLIANCE_SENSOR_TYPES = [
 POWER_APPLIANCE_SENSOR_TYPES = [
     SensorEntityDescription(
         key="consumptionData.heatingEnergyConsumed",
-        name="Heating Energy Consumed in kWh",
+        name="Heating Energy Consumed",
         entity_registry_enabled_default=False,
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         device_class=SensorDeviceClass.ENERGY,
@@ -48,7 +48,7 @@ POWER_APPLIANCE_SENSOR_TYPES = [
     ),
     SensorEntityDescription(
         key="consumptionData.hotWaterEnergyConsumed",
-        name="Hot Water Energy Consumed in kWh",
+        name="Hot Water Energy Consumed",
         entity_registry_enabled_default=False,
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         device_class=SensorDeviceClass.ENERGY,
@@ -56,7 +56,7 @@ POWER_APPLIANCE_SENSOR_TYPES = [
     ),
     SensorEntityDescription(
         key="consumptionData.coolingEnergyConsumed",
-        name="Cooling Energy Consumed in kWh",
+        name="Cooling Energy Consumed",
         entity_registry_enabled_default=False,
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         device_class=SensorDeviceClass.ENERGY,
@@ -64,7 +64,7 @@ POWER_APPLIANCE_SENSOR_TYPES = [
     ),
     SensorEntityDescription(
         key="consumptionData.heatingEnergyDelivered",
-        name="Heating Energy Delivered in kWh",
+        name="Heating Energy Delivered",
         entity_registry_enabled_default=False,
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         device_class=SensorDeviceClass.ENERGY,
@@ -72,7 +72,7 @@ POWER_APPLIANCE_SENSOR_TYPES = [
     ),
     SensorEntityDescription(
         key="consumptionData.hotWaterEnergyDelivered",
-        name="Hot Water Energy Delivered in kWh",
+        name="Hot Water Energy Delivered",
         entity_registry_enabled_default=False,
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         device_class=SensorDeviceClass.ENERGY,
@@ -80,7 +80,7 @@ POWER_APPLIANCE_SENSOR_TYPES = [
     ),
     SensorEntityDescription(
         key="consumptionData.coolingEnergyDelivered",
-        name="Cooling Energy Delivered in kWh",
+        name="Cooling Energy Delivered",
         entity_registry_enabled_default=False,
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         device_class=SensorDeviceClass.ENERGY,
