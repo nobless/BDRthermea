@@ -12,7 +12,7 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, Upda
 from homeassistant.exceptions import ConfigEntryAuthFailed
 
 from .api import RemehaHomeAPI
-from .const import DOMAIN
+from .const import DOMAIN, MANUFACTURER
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -150,7 +150,7 @@ class RemehaHomeUpdateCoordinator(DataUpdateCoordinator):
             self.device_info[appliance_id] = DeviceInfo(
                 identifiers={(DOMAIN, appliance_id)},
                 name=appliance["houseName"],
-                manufacturer="Remeha",
+                manufacturer=MANUFACTURER,
                 model=self.technical_info[appliance_id]["applianceName"],
             )
 
@@ -184,7 +184,7 @@ class RemehaHomeUpdateCoordinator(DataUpdateCoordinator):
                 self.device_info[climate_zone_id] = DeviceInfo(
                     identifiers={(DOMAIN, climate_zone_id)},
                     name=climate_zone["name"],
-                    manufacturer="Remeha",
+                    manufacturer=MANUFACTURER,
                     model=gateway_info["name"],
                     hw_version=gateway_info["hardwareVersion"],
                     sw_version=gateway_info["softwareVersion"],
@@ -197,7 +197,7 @@ class RemehaHomeUpdateCoordinator(DataUpdateCoordinator):
                 self.device_info[hot_water_zone_id] = DeviceInfo(
                     identifiers={(DOMAIN, hot_water_zone_id)},
                     name=hot_water_zone["name"],
-                    manufacturer="Remeha",
+                    manufacturer=MANUFACTURER,
                     model="Hot Water Zone",
                     via_device=(DOMAIN, appliance_id),
                 )
