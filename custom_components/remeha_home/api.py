@@ -136,22 +136,43 @@ class RemehaHomeAPI:
         return await response.json()
 
     async def async_get_consumption_data_for_today(self, appliance_id: str) -> dict:
-        """Get technical information for an appliance."""
+        """Get daily consumption data for an appliance."""
         today = datetime.datetime.now().replace(
             hour=0, minute=0, second=0, microsecond=0
         )
         end_of_today = today + datetime.timedelta(hours=23, minutes=59, seconds=59)
+        return await self._async_get_consumption_data_for_period('daily', today, end_of_today)
 
-        today_string = today.strftime("%Y-%m-%d %H:%M:%S.%fZ")
-        end_of_today_string = end_of_today.strftime("%Y-%m-%d %H:%M:%S.%fZ")
+    async def async_get_consumption_data_for_this_month(self, appliance_id: str) -> dict:
+        """Get monthly consumption data for an appliance."""
+
+        start_of_month = datetime.datetime.now().replace( day=1, hour=0, minute=0, second=0, microsecond=0 ) 
+        next_month = start_of_month + datetime.timedelta(days=32) 
+        end_of_month = next_month.replace(day=1) + datetime.timedelta(seconds=-1)
+
+        return await self._async_get_consumption_data_for_period('monthly', start_of_month, end_of_month)
+
+    async def async_get_consumption_data_for_this_year(self, appliance_id: str) -> dict:
+        """Get monthly consumption data for an appliance."""
+        
+        start_of_year = datetime.datetime.now().replace( day=1, month=1, hour=0, minute=0, second=0, microsecond=0 ) 
+        next_year = start_of_year + datetime.timedelta(days=367) 
+        end_of_year = next_year.replace(day=1) + datetime.timedelta(seconds=-1)
+
+        return await self._async_get_consumption_data_for_period('yearly', start_of_year, end_of_year)
+
+    async def _async_get_consumption_data_for_period(self, appliance_id: str, period: str, start: datetime, end: datetime) -> dict:
+        """Get consumption data for an appliance for given period."""
+
+        start_string = start.strftime("%Y-%m-%d %H:%M:%S.%fZ")
+        end_string = end.strftime("%Y-%m-%d %H:%M:%S.%fZ")
 
         response = await self._async_api_request(
             "GET",
-            f"/appliances/{appliance_id}/energyconsumption/daily?startDate={today_string}&endDate={end_of_today_string}",
+            f"/appliances/{appliance_id}/energyconsumption/{period}?startDate={start_string}&endDate={end_string}",
         )
         response.raise_for_status()
         return await response.json()
-
 
 class RemehaHomeAuthFailed(Exception):
     """Error to indicate that authentication failed."""
